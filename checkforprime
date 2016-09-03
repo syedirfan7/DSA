@@ -11,13 +11,15 @@
   }
 
     public static String checkForPrime(int x,int i){
-		if (i!=x&&i!=1&&x%i==0){
-		String val="false as it is divisible by "+i+" and also with \'1',"+x;
-	  return val;
+	if (i!=x&&i!=1&&x%i==0){
+	String val="false as it is divisible by "+i+" and also with \'1',"+x;
+	return val;
 	  }else {
 	  i++;
-	  return if (i>x)return "true";
-	  else return checkForPrime(x,i);
+	  return if (i>x){
+	  return "true";}
+	  else {
+	  return checkForPrime(x,i);}
 	  }
   }
 }

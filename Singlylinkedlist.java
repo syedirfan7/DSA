@@ -22,53 +22,6 @@ System.out.print("Singlylinkedlist");}
 }
 */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*first ll impletation  */
 class Singlylinkedlist{
 Node head;

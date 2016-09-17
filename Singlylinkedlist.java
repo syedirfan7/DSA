@@ -79,6 +79,10 @@ n=n.next;
 n.next=newNode;
 //return;
 }
+public void deletefirst(){
+	System.out.println("Deleted first element "+head.data);
+	head=head.next;
+	}
 
 public static void main(String args[]){
 
@@ -109,5 +113,8 @@ slist.push(10);
 slist.printList();
 slist.insertnext(second,8);
 slist.printList();
+slist.deletefirst();
+slist.printList();
+
 }
 }

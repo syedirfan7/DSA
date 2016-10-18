@@ -1,4 +1,4 @@
-class DoublyLinkedList {
+
 	//Node head;
 	
 	/*http://www.javamadesoeasy.com/2015/01/doublylinkedlist-insert-and-delete-at.html*/
@@ -8,67 +8,83 @@ class DoublyLinkedList {
 		Node prev;
 		Node(int d){
 		data=d;
-		next=null;
-		prev=null;
 		}
-		Node firstNode=null,lastNode;
-		//System.out.println(DoublyLinkedList.lastNode+" "+firstNode);
-		//firstNode.next=lastNode;
-		//lastNode.prev=firstNode;
-	}
+		}
+	class Linkedlist{
+		Node firstNode,lastNode;
+		Linkedlist(){
+			firstNode=null;
+		}
+	
 	public void push(int data){
 		Node newNode=new Node(data);
-		
-		//Node temp=first;
-		firstNode.prev=newNode;
+		if (firstNode==null){
+			lastNode=newNode;
+		}else {
+		firstNode.prev=newNode;}
 		newNode.next=firstNode;
 		firstNode=newNode;
-		System.out.println(newNode.data+" is pushed into the list now");
-		//return newNode; 
+		System.out.println(" "+newNode.data+" is pushed into the list now");
 		
-		}
-		/* public void printDll(){
-			Node n= head;
-			if (head!=null){
-			while(n.next!=null){
-				System.out.print(" "+n.data);
-				n=n.next;
+	}
+	public void printForw(){
+		System.out.println("Printing the list in forward direction");
+		Node n= firstNode;
+		if (n!=null){
+			while(n!=null){
+			System.out.println(" "+n.data+" ");
+			n=n.next;
 			}	
-		}else {System.out.println("List is empty");}
+		}
+		else {System.out.println("List is empty");}
+			
+	} 
+	 public void printBack(){
+		System.out.println("Printing the list in backward direction");
+		Node n=lastNode;
+		if (n!=null){
+			while(n!=null){
+				System.out.println(n.data);
+				n=n.prev;
+				}
+			}
+		else{System.out.println("List is empty");}
+		 }
+	public void pop(){
+		if (firstNode==null){//list is empty
+			System.out.println("No Nodes to delete");
+		}	else  if (firstNode.next==null){// only on node ie second node is null
+			System.out.println(firstNode.data+" is popped out");		
+			lastNode=null;
+			firstNode=null;
+		}
+		else{
+			System.out.println(firstNode.data+" is popped out");		
+			firstNode.next.prev=null;
+			firstNode=firstNode.next;
+		}
+		
+	}	 
+	}
 				
-				} */
-		public void printList(){
-	System.out.println("Displaying the list");
-	if (firstNode!=null){
-	Node n=firstNode;
-	while(n!=lastNode){
-		boolean b = n.prev==null?true:false;
-	System.out.println(n.data+" "+ b);
-	n=n.next;
-	}
-	}
-	else{System.out.println("List is empty");}
-	}			
-
+public class DoublyLinkedList {
 
 	public static void main(String args[]){
-		
-		DoublyLinkedList dll = new DoublyLinkedList();	
+		Linkedlist linkedlist =new Linkedlist();
 		System.out.println("Printing Doubly Linkedlist");
-		//dll.printList();
-		dll.firstNode = new Node(0);
-		dll.lastNode=new Node(0);
-		dll.firstNode.next=dll.lastNode;
-		dll.lastNode.prev=dll.firstNode;
-		dll.push(4);
-		dll.printList();
-		//System.out.println(n.data);
-		dll.push(10);
-		dll.printList();
-		//System.out.println(n.data);
-		dll.push(150);
-		dll.printList();
+		linkedlist.push(4);
+		linkedlist.push(5);
+		linkedlist.push(78);
+		linkedlist.printForw();
+		linkedlist.printBack();
+		linkedlist.push(9);
+		linkedlist.printForw();
+		linkedlist.printBack();
+		linkedlist.pop();
+		linkedlist.pop();
+		linkedlist.printForw();
+		linkedlist.printBack();
 		
-	}
+		}
 	
 	}

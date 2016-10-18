@@ -13,7 +13,7 @@ class DoublyLinkedList {
 	public void push(int data){
 		Node newNode=new Node(data);
 		Node temp=head;
-		temp.prev=newNode;
+		//temp.prev=newNode;
 		newNode.next=head;
 		
 		head=newNode;
@@ -31,22 +31,18 @@ class DoublyLinkedList {
 		}else {System.out.println("List is empty");}
 				
 				} */
-	public void printList(){
-System.out.println("Displaying the list");
-
-
-if (head!=null){
-Node n=head;
-while(n!=null){
-	boolean b = n.prev==null?true:false;
-System.out.println(n.data+" "+ b);
-n=n.next;
-
-
-}
-}
-else{System.out.println("List is empty");}
-}			
+		public void printList(){
+	System.out.println("Displaying the list");
+	if (head!=null){
+	Node n=head;
+	while(n!=null){
+		boolean b = n.prev==null?true:false;
+	System.out.println(n.data+" "+ b);
+	n=n.next;
+	}
+	}
+	else{System.out.println("List is empty");}
+	}			
 
 
 	public static void main(String args[]){
@@ -60,7 +56,7 @@ else{System.out.println("List is empty");}
 		dll.push(10);
 		dll.printList();
 		//System.out.println(n.data);
-	dll.push(150);
+		dll.push(150);
 		dll.printList();
 		
 	}

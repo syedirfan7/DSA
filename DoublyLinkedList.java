@@ -1,6 +1,8 @@
 class DoublyLinkedList {
-	Node head;
-	static class Node{
+	//Node head;
+	
+	/*http://www.javamadesoeasy.com/2015/01/doublylinkedlist-insert-and-delete-at.html*/
+	 class Node{
 		int data;
 		Node next;
 		Node prev;
@@ -9,16 +11,20 @@ class DoublyLinkedList {
 		next=null;
 		prev=null;
 		}
+		Node firstNode,lastNode;
+		//System.out.println(DoublyLinkedList.lastNode+" "+firstNode);
+		//firstNode.next=lastNode;
+		//lastNode.prev=firstNode;
 	}
 	public void push(int data){
 		Node newNode=new Node(data);
-		Node temp=head;
-		//temp.prev=newNode;
-		newNode.next=head;
 		
-		head=newNode;
+		/* //Node temp=first;
+		firstNode.prev=newNode;
+		newNode.next=firstNode;
+		firstNode=newNode;
 		System.out.println(newNode.data+" is pushed into the list now");
-		//return newNode;
+		//return newNode; */
 		
 		}
 		/* public void printDll(){
@@ -33,9 +39,9 @@ class DoublyLinkedList {
 				} */
 		public void printList(){
 	System.out.println("Displaying the list");
-	if (head!=null){
-	Node n=head;
-	while(n!=null){
+	if (firstNode!=null){
+	Node n=firstNode;
+	while(n!=lastNode){
 		boolean b = n.prev==null?true:false;
 	System.out.println(n.data+" "+ b);
 	n=n.next;
@@ -50,6 +56,10 @@ class DoublyLinkedList {
 		DoublyLinkedList dll = new DoublyLinkedList();	
 		System.out.println("Printing Doubly Linkedlist");
 		//dll.printList();
+		dll.firstNode = new Node(0);
+		dll.lastNode=new Node(0);
+		dll.firstNode.next=dll.lastNode;
+		dll.lastNode.prev=dll.firstNode;
 		dll.push(4);
 		dll.printList();
 		//System.out.println(n.data);

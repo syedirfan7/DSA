@@ -26,7 +26,7 @@ System.out.print("Singlylinkedlist");}
 class Singlylinkedlist{
 Node head;
 
-static class Node{
+ class Node{
 
 int data;
 Node next;

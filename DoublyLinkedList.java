@@ -11,7 +11,7 @@ class DoublyLinkedList {
 		next=null;
 		prev=null;
 		}
-		Node firstNode,lastNode;
+		Node firstNode=null,lastNode;
 		//System.out.println(DoublyLinkedList.lastNode+" "+firstNode);
 		//firstNode.next=lastNode;
 		//lastNode.prev=firstNode;
@@ -19,12 +19,12 @@ class DoublyLinkedList {
 	public void push(int data){
 		Node newNode=new Node(data);
 		
-		/* //Node temp=first;
+		//Node temp=first;
 		firstNode.prev=newNode;
 		newNode.next=firstNode;
 		firstNode=newNode;
 		System.out.println(newNode.data+" is pushed into the list now");
-		//return newNode; */
+		//return newNode; 
 		
 		}
 		/* public void printDll(){

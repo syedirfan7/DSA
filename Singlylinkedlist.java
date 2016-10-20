@@ -133,17 +133,9 @@ public void pop(){
 public static void main(String args[]){
 
 Singlylinkedlist slist=new Singlylinkedlist();
-
-//slist.head=new Node(1);
-//Node second=new Node(2);
-//Node third=new Node(3);
-//slist.head.next=second;
-//second.next=third;
-
 slist.printList();
 slist.push(4);
 slist.printList();
-//slist.insertnext(second,6);
 slist.printList();
 slist.insertlast(7);
 slist.printList();
@@ -154,21 +146,15 @@ slist.head.next.next.next=second;
 second.next=third;
  */slist.insertlast(7);
 slist.printList();
-
 slist.insertlast(7);
 slist.printList();	
 slist.push(10);
 slist.push(15);
-
 slist.printList();
-// slist.insertnext(second,8);
-//slist.printList();
 slist.pop();
-
 slist.printList();
 slist.deletelast();
 slist.printList();
-
 slist.deletelast();
 slist.printList();
 slist.deleteNode(7);

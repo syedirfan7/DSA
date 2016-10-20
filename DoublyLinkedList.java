@@ -120,15 +120,26 @@
 			lastNode=lastNode.prev;
 			lastNode.next=null;
 		}
-		/* public void deleteAt(int num){
+		public void deleteAt(int num){
 			int numNode=num;
 			Node n=firstNode;
-			while(num-1>0){
+			if ((num<1) ||(num>count)){
+				System.out.println("Try to delete the Nodes from 1 to "+count);
+			}
+			else if (numNode==count){deleteFromlast();}
+			else if (numNode==1){pop();}
+			else {
+				while(num-1>0){
 				n=n.next;
 				num--;
+				}
+				count--;
+				System.out.println("A node with data "+n.data+" is deleted from position "+numNode+" of list\nTotal Nodes are "+count);
+				n.prev.next=n.next;	
+				n.next.prev=n.prev;
+				
 			}
-			
-		} */
+		}
 	}
 				
 public class DoublyLinkedList {
@@ -168,6 +179,12 @@ public class DoublyLinkedList {
 			linkedlist.insertAt(8,54);
 			linkedlist.printForw();
 			linkedlist.printBack(); //88 5 56 45 100 54 4 
-		}
+			linkedlist.deleteAt(0);
+			linkedlist.deleteAt(1);
+			linkedlist.deleteAt(5);
+			linkedlist.	deleteAt(9);
+			linkedlist.printForw();
+			linkedlist.printBack();
+			}
 	
 	}

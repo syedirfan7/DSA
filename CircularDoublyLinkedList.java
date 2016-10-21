@@ -31,8 +31,9 @@
 			int node=num;
 			Node n=firstNode;
 			Node newNode=new Node(data);
-			if ((num<1) ||(num>count)){
-				System.out.println("Try to add the Nodes from 1 to "+count);
+			if ((num<1) ||(num>count) ){
+				if (count==0){System.out.println("List is empty");}
+				else System.out.println("Try to add the Nodes from 1 to "+count);
 			}else if(num==1){
 				push(data);
 			}//else if (num==count){insertAtlast(data);}
@@ -53,16 +54,21 @@
 			Node newNode=new Node(data);
 			if (firstNode==null){
 				count++;
+				//// added for CDLL
+				newNode.prev=newNode;
+				newNode.next=newNode;
+				firstNode=newNode;// added for CDLL
 				lastNode=newNode;// added for CDLL
-				firstNode=lastNode;// added for CDLL
-				lastNode.next=firstNode;// added for CDLL
-				firstNode.prev=lastNode;// added for CDLL
-			}else {
-			newNode.next=lastNode;
+			} else {
+/* 			newNode.next=lastNode;
 			firstNode.prev=newNode;
 			lastNode.next=newNode;
-			newNode.prev=firstNode;
-			//firstNode=newNode; working at this line
+			newNode.prev=firstNode; */
+			newNode.next=firstNode;
+			lastNode.next=newNode;
+			newNode.prev=lastNode;
+			firstNode.prev=newNode;
+			firstNode=newNode; 
 			count++;
 			}
 			//newNode.next=firstNode;
@@ -71,27 +77,30 @@
 			
 		}
 		public void printForw(){
-			System.out.println("Printing the list in forward direction");
 			Node n= firstNode;
-			if (n!=null){
-				while(n!=lastNode){
-				System.out.println(n.data);
-				n=n.next;
-				
-				}	
+			if (n!=null && count!=0){
+				System.out.println("Printing the list in forward direction");
+				int num=0;
+				while(num<count){
+					System.out.println(n.data);
+					n=n.next;
+					num++;
+				}
 			}
 			else {System.out.println("List is empty");}
 				
 		} 
 		 public void printBack(){
-			System.out.println("Printing the list in backward direction");
 			Node n=lastNode;
-			if (n!=null){
-				while(n!=firstNode){
+			if (n!=null && count!=0){
+				System.out.println("Printing the list in backward direction");
+				int num=count;
+				while(num>0){
 					System.out.println(n.data);
 					n=n.prev;
-					}
+					num--;
 				}
+			}
 			else{System.out.println("List is empty");}
 		}
 		public void pop(){
@@ -107,10 +116,13 @@
 			else{
 				count--;
 				System.out.println(firstNode.data+" is popped out\nTotal Nodes are "+count);		
-				firstNode.prev.next=firstNode.next;//added for CDLL
-				firstNode.next.next=firstNode.prev;//added for CDLL
-				//firstNode.next.prev=null;
+				lastNode.next=firstNode.next;//added for CDLL
 				firstNode=firstNode.next;
+				firstNode.prev=lastNode;
+				//firstNode.next.next=firstNode.prev;//added for CDLL 
+				//firstNode.next.prev=null;
+				
+				//lastNode.next=firstNode;//added for CDLL
 				
 			}
 			
@@ -137,7 +149,8 @@
 			int numNode=num;
 			Node n=firstNode;
 			if ((num<1) ||(num>count)){
-				System.out.println("Try to delete the Nodes from 1 to "+count);
+				if (count==0){System.out.println("List is empty");}
+				else System.out.println("Try to delete the Nodes from 1 to "+count);
 			}
 			else if (numNode==count){deleteFromlast();}
 			else if (numNode==1){pop();}
@@ -159,7 +172,7 @@ public class CircularDoublyLinkedList {
 		public static void main(String args[]){
 			Linkedlist linkedlist =new Linkedlist();
 			System.out.println("Printing Circular Doubly Linkedlist");
-			 linkedlist.push(4);
+			linkedlist.push(4);
 			linkedlist.push(5);
 			linkedlist.push(78);
 			linkedlist.printForw();
@@ -169,6 +182,8 @@ public class CircularDoublyLinkedList {
 			linkedlist.printBack();
 			System.out.println("Total Number of Nodes= "+linkedlist.count);
 			linkedlist.printNode(3);
+			linkedlist.pop();
+			linkedlist.pop();
 			linkedlist.pop();
 			linkedlist.pop();
 			linkedlist.printForw();
@@ -185,7 +200,7 @@ public class CircularDoublyLinkedList {
 			linkedlist.printBack();
 			linkedlist.insertAt(0,55);
 			linkedlist.insertAt(1,88);
-			linkedlist.insertAt(6,54);
+			linkedlist.insertAt(6,54);	
 			linkedlist.insertAt(3,56);
 			linkedlist.insertAt(4,45);
 			linkedlist.insertAt(6,54);
@@ -195,7 +210,7 @@ public class CircularDoublyLinkedList {
 			linkedlist.deleteAt(0);
 			linkedlist.deleteAt(1);
 			linkedlist.deleteAt(5);
-			linkedlist.	deleteAt(9);
+			linkedlist.deleteAt(9);
 			linkedlist.printForw();
 			linkedlist.printBack();
 		}
